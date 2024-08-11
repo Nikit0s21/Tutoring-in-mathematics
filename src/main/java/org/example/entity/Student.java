@@ -22,11 +22,11 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="Student_id")
-    private Long Student_id;
+    private Long student_id;
 
     @Column(name="Fcs")
-    private String FCs;
+    private String fcs;
 
     @Column(name="Birthdate")
-    private LocalDate Birthdate;
+    private LocalDate birthdate;
 }

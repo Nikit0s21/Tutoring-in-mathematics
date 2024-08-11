@@ -5,6 +5,7 @@ import org.example.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,10 +17,9 @@ public class StudentService {
     {
         this.studentRepository=studentRepository;
     }
-    public List<Student> getAllStudents() {
+    public List getAllStudents() {
         return studentRepository.findAll();
     }
-
 
     public Student getStudentById(Long id) {
         return studentRepository.findById(id).orElse(null);
@@ -39,5 +39,6 @@ public class StudentService {
     public void deleteStudent(Long id) {
         studentRepository.deleteById(id);
     }
+
 }
 

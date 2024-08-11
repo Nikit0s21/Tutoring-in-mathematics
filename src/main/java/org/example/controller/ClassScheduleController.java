@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.math.BigDecimal;
 
 @RestController
-@RequestMapping("ClassSchedule")
+@RequestMapping("/classSchedule")
 public class ClassScheduleController {
     private final ClassScheduleService classScheduleService;
 
