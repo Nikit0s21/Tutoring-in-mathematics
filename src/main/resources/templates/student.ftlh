@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Organizer</title>
+    <title>List students</title>
     <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
 </head>
 <body>
-<h1>Organizer</h1>
+<h1>Students</h1>
 <h3>Add student to list</h3>
 <form action="/add" method="post">
     <table border="1px">

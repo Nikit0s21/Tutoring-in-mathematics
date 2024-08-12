@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "ClassSchedule")
@@ -21,25 +20,27 @@ public class ClassSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ClassSchedule_id")
-    private Long ClassSchedule_id;
+    private Long classSchedule_id;
 
     @Column(name="Topic")
-    private String Topic;
+    private String topic;
 
     @Column(name="StartDate")
-    private LocalDate StartDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime startDate;
 
     @Column(name="EndDate")
-    private LocalDate EndDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime endDate;
 
     @Column(name="Price")
-    private BigDecimal Price;
+    private BigDecimal price;
 
     @Column(name="Paid")
-    private boolean Paid;
+    private boolean paid;
 
     @Column(name="Conducted")
-    private boolean Conducted;
+    private boolean conducted;
 
     @ManyToOne
     @JoinColumn(name="Student_id", referencedColumnName = "Student_id")

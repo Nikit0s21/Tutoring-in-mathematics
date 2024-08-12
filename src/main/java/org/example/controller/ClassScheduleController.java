@@ -3,12 +3,15 @@ package org.example.controller;
 import org.example.entity.ClassSchedule;
 import org.example.service.ClassScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
 
 import java.math.BigDecimal;
+import java.util.List;
 
-@RestController
-@RequestMapping("/classSchedule")
+@Controller
+@RequestMapping
 public class ClassScheduleController {
     private final ClassScheduleService classScheduleService;
 
@@ -17,28 +20,12 @@ public class ClassScheduleController {
     {
         this.classScheduleService=classScheduleService;
     }
-
-    @GetMapping("/{id}")
-    public ClassSchedule getClassScheduleById(@PathVariable Long id)
-    {
-        return classScheduleService.getClassScheduleById(id);
-    }
-    @PostMapping
-    public ClassSchedule createClassSchedule(@RequestBody ClassSchedule classSchedule) {
-        return classScheduleService.createClassSchedule(classSchedule);
+    @GetMapping("/class-schedule/current-week")
+    public String getCurrentWeekClasses(Model model) {
+        List<ClassSchedule> classes = classScheduleService.findClassesForCurrentWeek();
+        model.addAttribute("classSchedule", classes);
+        return "currentWeekClasses";
     }
 
 
-    @PutMapping("/{id}")
-    public ClassSchedule updateClassSchedule(@PathVariable String topic, @PathVariable BigDecimal price, @RequestBody ClassSchedule classSchedule) {
-        classSchedule.setTopic(topic);
-        classSchedule.setPrice(price);
-        return classScheduleService.updateClassSchedule(classSchedule);
-    }
-
-
-    @DeleteMapping("/{id}")
-    public void deleteClassSchedule(@PathVariable Long id) {
-        classScheduleService.deleteClassSchedule(id);
-    }
 }
